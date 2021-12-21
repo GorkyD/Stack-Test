@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class ScoreText : MonoBehaviour
 {
-    private int score;
+    internal static int score;
     private TextMeshProUGUI text;
 
     private void Start()
     {
+        score = 0;
         text = GetComponent<TMPro.TextMeshProUGUI > ();
         GameManager.OnCubeSpawned += GameManager_OnCubeSpawned;
     }

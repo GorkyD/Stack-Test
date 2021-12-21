@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,8 +6,9 @@ public class GameManager : MonoBehaviour
     public static event Action OnCubeSpawned = delegate { };
 
     private CubeSpawner[] spawners;
-    private int spawnerIndex;
     private CubeSpawner currentSpawner;
+
+    private int spawnerIndex;
 
     private void Awake()
     {

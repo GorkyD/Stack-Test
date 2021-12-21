@@ -5,8 +5,8 @@ using UnityEngine;
 public partial class CubeSpawner : MonoBehaviour
 {
     [SerializeField] private MovingCube cubePrefab;
-
     [SerializeField] private MoveDirection moveDirection;
+
     public void SpawnCube()
     {
         var cube = Instantiate(cubePrefab);

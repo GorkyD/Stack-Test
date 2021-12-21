@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
 
 public class HighScoreText : MonoBehaviour
 {
@@ -21,16 +18,16 @@ public class HighScoreText : MonoBehaviour
         text.text = "";
     }
 
-    private void OnDestroy()
-    {
-        GameManager.OnCubeSpawned -= GameManager_OnCubeSpawned;
-    }
-
     private void Update()
     {
         if (ScoreText.score > highScore)
         {
             highScore = ScoreText.score;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnCubeSpawned -= GameManager_OnCubeSpawned;
     }
 }

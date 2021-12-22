@@ -109,3 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  pointX: {fileID: 2111393553524751350, guid: dcebcd88e71474d4f81707285ad45ef2, type: 3}
+  pointZ: {fileID: 7343364897589454207, guid: 814a3e6d64eacfc4dac4dc108f0584c3, type: 3}
+  pointNegX: {fileID: 995129985673771359, guid: 697c4329d3056d349a0ff76a54ee860c, type: 3}
+  pointNegZ: {fileID: 2679413708268471831, guid: 094a5b7fddc63514cb3c0b45b7cb1feb, type: 3}

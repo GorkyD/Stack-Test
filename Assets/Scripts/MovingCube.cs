@@ -8,6 +8,14 @@ public class MovingCube : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
 
+    [SerializeField] private GameObject pointX;
+    [SerializeField] private GameObject pointZ;
+    [SerializeField] private GameObject pointNegX;
+    [SerializeField] private GameObject pointNegZ;
+
+    private bool moveZ;
+    private bool moveX;
+
     public static MovingCube CurrentCube { get; private set;}
     public static MovingCube LastCube { get; private set; }
     public CubeSpawner.MoveDirection MoveDirection { get; set; }
@@ -29,11 +37,41 @@ public class MovingCube : MonoBehaviour
     {
         if (MoveDirection == CubeSpawner.MoveDirection.Z)
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            if (moveZ == false)
+            {
+                transform.position += transform.forward * Time.deltaTime * speed;
+                if (transform.position.z > pointNegZ.transform.position.z)
+                {
+                    moveZ = true;
+                }
+            }
+            else if(moveZ == true)
+            {
+                transform.position -= transform.forward * Time.deltaTime * speed;
+                if (transform.position.z < pointZ.transform.position.z)
+                {
+                    moveZ = false;
+                }
+            }         
         }
         else
         {
-            transform.position += transform.right * Time.deltaTime * speed;
+            if (moveX == false)
+            {
+                transform.position += transform.right * Time.deltaTime * speed;
+                if (transform.position.x > pointNegX.transform.position.x)
+                {
+                    moveX = true;
+                }
+            }
+            else if (moveX == true)
+            {
+                transform.position -= transform.right * Time.deltaTime * speed;
+                if (transform.position.x < pointX.transform.position.x)
+                {
+                    moveX = false;
+                }
+            }
         }
     }
 

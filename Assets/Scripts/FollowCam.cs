@@ -11,7 +11,11 @@ public class FollowCam : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(MovingCube.LastCube.transform.position.x + offset, 
-            MovingCube.LastCube.transform.position.y + offset,MovingCube.LastCube.transform.position.z + offset);
+        if (MovingCube.LastCube != null)
+        {
+            transform.position = new Vector3(MovingCube.LastCube.transform.position.x + offset,
+            MovingCube.LastCube.transform.position.y + offset, MovingCube.LastCube.transform.position.z + offset);
+        }
+        
     }
 }

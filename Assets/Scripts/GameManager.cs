@@ -5,9 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static event Action OnCubeSpawned = delegate { };
 
-    private CubeSpawner[] spawners;
-    private CubeSpawner currentSpawner;
+    [SerializeField] private CubeSpawner[] spawners;
 
+    private CubeSpawner currentSpawner;
     private int spawnerIndex;
 
     private void Awake()
@@ -19,18 +19,25 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (MovingCube.CurrentCube != null)
-            {
-                MovingCube.CurrentCube.Stop();
-            }
-
-            spawnerIndex = spawnerIndex == 0 ? 1 : 0;
-
-            currentSpawner = spawners[spawnerIndex];
-
-            currentSpawner.SpawnCube();
-
-            OnCubeSpawned();
+            Spawn();
         }
+
+        Debug.Log(spawnerIndex);
+    }
+
+    private void Spawn()
+    {
+        if (MovingCube.CurrentCube != null)
+        {
+            MovingCube.CurrentCube.Stop();
+        }
+
+        spawnerIndex = UnityEngine.Random.Range(0,4);
+
+        currentSpawner = spawners[spawnerIndex];
+
+        currentSpawner.SpawnCube();
+
+        OnCubeSpawned();
     }
 }

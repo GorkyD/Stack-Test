@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class CubeSpawner : MonoBehaviour
@@ -25,22 +23,13 @@ public partial class CubeSpawner : MonoBehaviour
             else
             {
                 cube.transform.position = new Vector3(negX, MovingCube.LastCube.transform.position.y + cubePrefab.transform.localScale.y, negZ);
-            }
-            
+            }    
         }
         else
         {
             cube.transform.position = transform.position;
         }
 
-        cube.MoveDirection = moveDirection;
-        
+        cube.MoveDirection = moveDirection;   
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, cubePrefab.transform.localScale);
-    }
-
 }

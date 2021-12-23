@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private CubeSpawner currentSpawner;
     private int spawnerIndex;
 
-    private void Awake()
+    private void Start()
     {
         spawners = FindObjectsOfType<CubeSpawner>();
     }
@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
         {
             Spawn();
         }
-
-        Debug.Log(spawnerIndex);
     }
 
     private void Spawn()

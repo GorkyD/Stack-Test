@@ -11,17 +11,18 @@ public class MovingCube : MonoBehaviour
     [SerializeField] private GameObject pointNegZ;
     #endregion
 
-    #region bool
+    #region Bool
     private bool moveZ;
     private bool moveX;
     private bool moveNegZ;
     private bool moveNegX;
     #endregion
 
-    #region GetSet
+    #region Public
     public static MovingCube CurrentCube { get; private set;}
     public static MovingCube LastCube { get; private set; }
-    public CubeSpawner.MoveDirection MoveDirection { get; set; }
+
+    public CubeSpawner.MoveDirection MoveDirection;
     #endregion
 
     private void Awake()
@@ -30,14 +31,19 @@ public class MovingCube : MonoBehaviour
         {
             LastCube = GameObject.Find("Start Area").GetComponent<MovingCube>();
         }
-
         CurrentCube = this;
-        GetComponent<Renderer>().material.color = GetRandomColor();
+
+        GetComponent<Renderer>().material.color = RandomColor.GetRandomColor();
 
         transform.localScale = new Vector3(LastCube.transform.localScale.x, transform.localScale.y, LastCube.transform.localScale.z);
     }
 
     private void FixedUpdate()
+    {
+        CycleMoving();
+    }
+
+    private void CycleMoving()
     {
         if (MoveDirection == CubeSpawner.MoveDirection.Z)
         {
@@ -49,16 +55,16 @@ public class MovingCube : MonoBehaviour
                     moveZ = true;
                 }
             }
-            else if(moveZ == true)
+            else if (moveZ == true)
             {
                 transform.position -= transform.forward * Time.deltaTime * speed;
                 if (transform.position.z < pointZ.transform.position.z)
                 {
                     moveZ = false;
                 }
-            }         
+            }
         }
-        else if(MoveDirection == CubeSpawner.MoveDirection.X)
+        else if (MoveDirection == CubeSpawner.MoveDirection.X)
         {
             if (moveX == false)
             {
@@ -77,7 +83,7 @@ public class MovingCube : MonoBehaviour
                 }
             }
         }
-        else if(MoveDirection == CubeSpawner.MoveDirection.NegZ)
+        else if (MoveDirection == CubeSpawner.MoveDirection.NegZ)
         {
             if (moveNegZ == false)
             {
@@ -117,7 +123,7 @@ public class MovingCube : MonoBehaviour
         }
     }
 
-    internal void Stop()
+    public void Stop()
     {
         speed = 0f;
 
@@ -130,7 +136,6 @@ public class MovingCube : MonoBehaviour
         {
             LastCube = null;
             CurrentCube = null;
-
             SceneManager.LoadScene(0);
         }
 
@@ -210,8 +215,4 @@ public class MovingCube : MonoBehaviour
         Destroy(cube.gameObject,2f);
     }
 
-    private Color GetRandomColor()
-    {
-        return new Color(UnityEngine.Random.Range(0, 1f), UnityEngine.Random.Range(0, 1f), UnityEngine.Random.Range(0, 1f));
-    }
 }

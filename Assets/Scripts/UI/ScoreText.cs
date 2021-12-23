@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreText : MonoBehaviour
 {
-    internal static int score;
+    private int score;
     private TextMeshProUGUI text;
 
     private void Start()
@@ -15,12 +15,17 @@ public class ScoreText : MonoBehaviour
 
     private void GameManager_OnCubeSpawned()
     {
-        score++;
         text.text = "Score: " + score;
+        score++;
     }
 
     private void OnDestroy()
     {
         GameManager.OnCubeSpawned -= GameManager_OnCubeSpawned;
+    }
+
+    public int GetScore()
+    {
+        return score - 1;
     }
 }

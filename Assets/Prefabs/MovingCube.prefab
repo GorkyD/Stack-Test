@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2115035842143500486}
   - component: {fileID: 2115035842143500487}
   - component: {fileID: 1110842670}
+  - component: {fileID: -6359861998802636679}
   m_Layer: 0
   m_Name: MovingCube
   m_TagString: Untagged
@@ -113,4 +114,18 @@ MonoBehaviour:
   pointZ: {fileID: 7343364897589454207, guid: 814a3e6d64eacfc4dac4dc108f0584c3, type: 3}
   pointNegX: {fileID: 995129985673771359, guid: 697c4329d3056d349a0ff76a54ee860c, type: 3}
   pointNegZ: {fileID: 2679413708268471831, guid: 094a5b7fddc63514cb3c0b45b7cb1feb, type: 3}
-  Saver: {fileID: 617263815364283175, guid: bcb5283a41e737e4cb48140525e44359, type: 3}
+  sliceCube: {fileID: 1773575322507260134, guid: 5f67d86e4ae018744846dd170d74f4eb, type: 3}
+  MoveDirection: 0
+--- !u!114 &-6359861998802636679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115035842143500484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03d47e583590d3449b58c2b7be3cfbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingDirection: {fileID: 1110842670}

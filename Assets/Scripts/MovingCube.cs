@@ -21,7 +21,6 @@ public class MovingCube : MonoBehaviour
     #region Public
     public static MovingCube CurrentCube { get; private set;}
     public static MovingCube LastCube { get; private set; }
-
     public CubeSpawner.MoveDirection MoveDirection;
     #endregion
 
@@ -166,12 +165,12 @@ public class MovingCube : MonoBehaviour
         
     }
 
-    private void SliceCubeOnX(float hangOver, float direction)
+    public void SliceCubeOnX(float hangOver, float direction)
     {
-        float newCubeSizeX = LastCube.transform.localScale.x - Mathf.Abs(hangOver);
+        float newCubeSizeX = MovingCube.LastCube.transform.localScale.x - Mathf.Abs(hangOver);
         float fallingCubeSize = transform.localScale.x - newCubeSizeX;
 
-        float newCubePosition = LastCube.transform.position.x + (hangOver / 2);
+        float newCubePosition = MovingCube.LastCube.transform.position.x + (hangOver / 2);
         transform.localScale = new Vector3(newCubeSizeX, transform.localScale.y, transform.localScale.z);
         transform.position = new Vector3(newCubePosition, transform.position.y, transform.position.z);
 
@@ -180,22 +179,21 @@ public class MovingCube : MonoBehaviour
 
         SpawnSlicedCube(fallingCubePositionX, fallingCubeSize);
     }
-    private void SliceCubeOnZ(float hangOver, float direction)
+    public void SliceCubeOnZ(float hangOver, float direction)
     {
-        float newCubeSizeZ = LastCube.transform.localScale.z - Mathf.Abs(hangOver);
+        float newCubeSizeZ = MovingCube.LastCube.transform.localScale.z - Mathf.Abs(hangOver);
         float fallingCubeSize = transform.localScale.z - newCubeSizeZ;
 
-        float newCubePosition = LastCube.transform.position.z + (hangOver / 2);
+        float newCubePosition = MovingCube.LastCube.transform.position.z + (hangOver / 2);
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, newCubeSizeZ);
-        transform.position = new Vector3(transform.position.x,transform.position.y,newCubePosition);
+        transform.position = new Vector3(transform.position.x, transform.position.y, newCubePosition);
 
         float fallingCubeEdge = transform.position.z + (newCubeSizeZ / 2 * direction);
         float fallingCubePositionZ = fallingCubeEdge + fallingCubeSize / 2f * direction;
 
         SpawnSlicedCube(fallingCubePositionZ, fallingCubeSize);
     }
-
-    private void SpawnSlicedCube(float fallingCubePositionZ, float fallingCubeSize)
+    public void SpawnSlicedCube(float fallingCubePositionZ, float fallingCubeSize)
     {
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
@@ -212,7 +210,8 @@ public class MovingCube : MonoBehaviour
 
         cube.AddComponent<Rigidbody>();
         cube.GetComponent<Renderer>().material.color = GetComponent<Renderer>().material.color;
-        Destroy(cube.gameObject,2f);
+        Destroy(cube.gameObject, 2f);
     }
+
 
 }

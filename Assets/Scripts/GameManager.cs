@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CubeSpawner[] spawners;
 
     private CubeSpawner currentSpawner;
+
     private int spawnerIndex;
 
     private void Start()

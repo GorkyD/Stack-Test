@@ -19,9 +19,9 @@ public class MovingCube : MonoBehaviour
     #endregion
 
     #region Public
-    public static MovingCube CurrentCube { get; private set;}
-    public static MovingCube LastCube { get; private set; }
     public CubeSpawner.MoveDirection MoveDirection;
+    public static MovingCube CurrentCube { get; private set; }
+    public static MovingCube LastCube { get; private set; }
     #endregion
 
     private void Awake()

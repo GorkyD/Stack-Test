@@ -114,7 +114,7 @@ MonoBehaviour:
   pointZ: {fileID: 7343364897589454207, guid: 814a3e6d64eacfc4dac4dc108f0584c3, type: 3}
   pointNegX: {fileID: 995129985673771359, guid: 697c4329d3056d349a0ff76a54ee860c, type: 3}
   pointNegZ: {fileID: 2679413708268471831, guid: 094a5b7fddc63514cb3c0b45b7cb1feb, type: 3}
-  sliceCube: {fileID: 1773575322507260134, guid: 5f67d86e4ae018744846dd170d74f4eb, type: 3}
+  gameManager: {fileID: 2263295760577077139, guid: 298094098f990424291df049b5521a49, type: 3}
   MoveDirection: 0
 --- !u!114 &-6359861998802636679
 MonoBehaviour:
